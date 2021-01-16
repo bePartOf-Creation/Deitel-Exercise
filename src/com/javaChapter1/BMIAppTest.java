@@ -5,7 +5,7 @@ import javax.swing.*;
 public class BMIAppTest {
     public static void main(String[] args) {
         BMI newBMI = new BMI(72.0,6.5);
-        double weight;
+        double weight = 0;
         double height;
 
         weight = Double.parseDouble(JOptionPane.showInputDialog("input your weight"));

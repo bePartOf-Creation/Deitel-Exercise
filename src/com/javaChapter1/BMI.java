@@ -18,12 +18,12 @@ public class BMI {
     }
 
     public void setWeight(double weight) {
-        if (weight > 0) {
-            this.weight = weight;
+        if (weight < 0) {
+            JOptionPane.showMessageDialog(null,"Invalid Input For Weight");
         }else
             {
-            JOptionPane.showMessageDialog(null,"Invalid Input For Weight");
-        }
+                this.weight = weight;
+            }
     }
 
     public double getHeight() {
@@ -31,10 +31,10 @@ public class BMI {
     }
 
     public void setHeight(double height) {
-      if(height > 0){
-          this.height = height;
-      }else{
+      if(height < 0){
           JOptionPane.showMessageDialog(null,"Invalid Input For Height");
+      }else{
+          this.height = height;
       }
     }
 

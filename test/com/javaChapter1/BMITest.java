@@ -25,7 +25,7 @@ class BMITest {
     void testThatUserInputWeightInPounds_CanBeUpdated(){
         BMI newBMI = new BMI(12.0, 6.5);
         newBMI.setWeight(23.0);
-        assertEquals( 23.0,newBMI.getWeight())          ;
+        assertEquals( 23.0,newBMI.getWeight());
     }
     @Test
     void testThatUserInputWeightInPound_CannotInputNegativeValue(){
