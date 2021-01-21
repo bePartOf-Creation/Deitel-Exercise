@@ -1,0 +1,4 @@
+To create a Data Model
+Click FIle
+Click New Model
+Double click on mydb to change your name.
