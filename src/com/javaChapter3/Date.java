@@ -52,7 +52,7 @@ public class Date {
     }
 
     public String displayDate() {
-      return (month + "/" + day + "/" + year);
+      return String.format("%d/%d/%d",month,day,year);
     }
 
 }

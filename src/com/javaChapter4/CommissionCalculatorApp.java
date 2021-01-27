@@ -10,7 +10,7 @@ public class CommissionCalculatorApp {
 
         num = Integer.parseInt(JOptionPane.showInputDialog(null,"Enter Numbers of Items Sold by you"));
         commission.setNumOfItems(num);
-      while(counter < commission.getNumOfItems()){
+        while(counter < commission.getNumOfItems()){
           double newItemsValue = Double.parseDouble(JOptionPane.showInputDialog(null,"Add a new items"));
           commission.addItems(newItemsValue);
           counter++;
