@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Position {
     private int rowPosition;
     private int columnPosition;
-    private Position position;
+   
 
     public Position(int rowPosition, int columnPosition) {
         this.rowPosition = rowPosition;
