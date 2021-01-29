@@ -10,5 +10,6 @@ public class SeparatingDigitsInIntegerApp {
         System.out.println("Enter Five digits");
         int fiveDigits = userInput.nextInt();
         separatingDigitsInInteger.separate(fiveDigits);
+
     }
 }
