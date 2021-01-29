@@ -1,6 +1,5 @@
 package com.javaChapter1;
 
-import com.javaChapter4.Palindromes;
 
 public class SeparatingDigitsInInteger {
 
