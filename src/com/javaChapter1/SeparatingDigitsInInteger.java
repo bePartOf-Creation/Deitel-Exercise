@@ -21,5 +21,6 @@ public class SeparatingDigitsInInteger {
 
         System.out.printf("%3d%3d%3d%3d%3d", modFive,modFour,modThree,modTwo,modOne);
 
+
     }
 }

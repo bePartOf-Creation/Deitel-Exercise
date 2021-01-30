@@ -10,6 +10,7 @@ public class PalindromesApp {
         Scanner userInput = new Scanner(System.in);
         int input = userInput.nextInt();
         palindromes.separate(input);
+        palindromes.isAPalindromes();
     }
 }
 

@@ -1,70 +1,41 @@
 package com.javaChapter7;
 
 public class Turtle {
-    private  Pen pen;
-    private CurrentLocation currentLocation;
-    private  Position currentPosition;
+    private Pen pen;
+    private Direction currentDirection;
 
-    public Turtle(Pen pen){
+    public Turtle(Pen pen) {
         this.pen = pen;
-        this.currentLocation = currentLocation.EAST;
-        this.currentPosition = currentPosition;
+        this.currentDirection = Direction.EAST; //Turtle's Default Direction is EAST
     }
     public Pen getPen() {
         return pen;
     }
 
-
-
-    public CurrentLocation getCurrentLocation() {
-        return currentLocation;
+    public void setCurrentDirection(Direction currentDirection) {
+        this.currentDirection = currentDirection;
     }
 
-    public void setCurrentLocation(CurrentLocation currentLocation) {
-        this.currentLocation = currentLocation;
+    public Direction getCurrentDirection() {
+        return currentDirection;
     }
 
     public void turnRight() {
-        switch (currentLocation){
-            case EAST  -> setCurrentDirection(CurrentLocation.SOUTH);
-            case SOUTH -> setCurrentDirection(CurrentLocation.WEST); 
-            case NORTH -> setCurrentDirection(CurrentLocation.EAST);
-            case WEST  -> setCurrentDirection(CurrentLocation.NORTH);
+        switch(currentDirection){
+            case EAST -> setCurrentDirection(Direction.SOUTH);
+            case SOUTH -> setCurrentDirection(Direction.WEST);
+            case WEST -> setCurrentDirection(Direction.NORTH);
+            case NORTH -> setCurrentDirection(Direction.EAST);
         }
     }
 
-    public void setCurrentDirection(CurrentLocation currentLocation) {
-        this.currentLocation = currentLocation;
-    }
+    public void turnLeft() {
+        switch (currentDirection){
+            case EAST -> setCurrentDirection(Direction.NORTH);
+            case NORTH -> setCurrentDirection(Direction.WEST);
+            case WEST -> setCurrentDirection(Direction.SOUTH);
+            case SOUTH -> setCurrentDirection(Direction.EAST);
 
-    public void setCurrentPosition(Position position) {
-        currentPosition = position;
-    }
-
-    public Position getCurrentPosition() {
-        return currentPosition;
-    }
-
-    public void move(SketchPad sketchPad, int numberOfSteps) {
-        numberOfSteps -=1;
-        Position currentPosition = getCurrentPosition();
-        int currentColumn = currentPosition.getColumnPosition();
-        int currentRow = currentPosition.getRowPosition();
-        PenOrientation currentPenOrientation = getPen().getPenOrientation();
-        switch (currentPenOrientation){
-            case PEN_UP -> {
-                switch (currentLocation){
-                    case EAST  ->  currentPosition.setColumnPosition(currentColumn + numberOfSteps);
-                    case SOUTH ->  currentPosition.setRowPosition(currentRow  + numberOfSteps);
-                    case NORTH ->  currentPosition.setRowPosition(currentRow - numberOfSteps);
-                }
-            }
-            case PEN_DOWN -> {
-                switch (currentLocation){
-
-                }
-            }
         }
-
     }
 }

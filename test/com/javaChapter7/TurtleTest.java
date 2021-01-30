@@ -4,102 +4,93 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class TurtleTest {
-    Pen turtlePen;
-    Turtle turtle;
-    SketchPad sketchPad = new SketchPad(20,20);
+        Turtle turtle;
+        Pen pen;
     @BeforeEach
     void setUp() {
-        turtlePen = new Pen();
-        turtle = new Turtle(turtlePen);
+        pen = new Pen();
     }
 
     @AfterEach
     void tearDown() {
     }
-    @Test
-    void turtle_hasAPen(){
+@Test
+    void test_ThatTurtleHasAPen(){
+        turtle = new Turtle(pen);
         assertNotNull(turtle.getPen());
-    }
-    @Test
-    void turtlePen_canBeSetToDown(){
-        turtle.getPen().setPenOrientation(PenOrientation.PEN_DOWN);
-        assertEquals(PenOrientation.PEN_DOWN,turtle.getPen().getPenOrientation());
-    }
-    @Test
-    void turtlePen_canBeSetToUP(){
+}
+@Test
+    void test_ThatTurtlePen_isUP(){
+        turtle = new Turtle(pen);
         turtle.getPen().setPenOrientation(PenOrientation.PEN_UP);
-        assertEquals(PenOrientation.PEN_UP,turtle.getPen().getPenOrientation());
-    }
-    @Test
-    void turtle_canHaveCurrentLocation(){
-        turtle.setCurrentLocation(CurrentLocation.EAST);
-        assertEquals(CurrentLocation.EAST,turtle.getCurrentLocation());
-    }
-    @Test
-    void testThatTurtle_canTurnRight(){
-        turtle.setCurrentLocation(CurrentLocation.EAST);
+        PenOrientation actual = turtle.getPen().getPenOrientation();
+        assertEquals(PenOrientation.PEN_UP,actual);
+}
+@Test
+    void test_ThatTurtlePen_isDOwn(){
+        turtle = new Turtle(pen);
+        turtle.getPen().setPenOrientation(PenOrientation.PEN_DOWN);
+        PenOrientation actual = turtle.getPen().getPenOrientation();
+        assertEquals(PenOrientation.PEN_DOWN,actual);
+}
+@Test
+    void test_ThatTurtleHasADefault_CurrentDirectionEAST(){
+        turtle = new Turtle(pen);
+        turtle.setCurrentDirection(Direction.EAST);
+        Direction actual = turtle.getCurrentDirection();
+        assertEquals(Direction.EAST, actual);
+
+        turtle.setCurrentDirection(Direction.WEST);
+        actual = turtle.getCurrentDirection();
+        assertNotEquals(Direction.EAST, actual);
+}
+@Test
+    void test_ThatTurtleCan_TurnRight(){
+        turtle = new Turtle(pen);
+        turtle.setCurrentDirection(Direction.EAST);
         turtle.turnRight();
-        assertEquals(CurrentLocation.SOUTH,turtle.getCurrentLocation());
-    }
+        assertEquals(Direction.SOUTH, turtle.getCurrentDirection());
 
-    @Test
-    void turtle_canMoveEastWards_onASketchPad_whilePenIsUP() {
-        turtle.setCurrentDirection(CurrentLocation.EAST);
-        turtle.getPen().setPenOrientation(PenOrientation.PEN_UP);
+        turtle.setCurrentDirection(Direction.SOUTH);
+        turtle.turnRight();
+        assertEquals(Direction.WEST, turtle.getCurrentDirection());
 
-        turtle.setCurrentPosition(new Position(0, 0));
-        turtle.move(sketchPad, 5);
-        assertEquals(new Position(0, 4), turtle.getCurrentPosition());
-        turtle.move(sketchPad, 2);
-        assertEquals(new Position(0, 5), turtle.getCurrentPosition());
-    }
-    @Test
-    void turtle_canMoveSouthWards_onASketchPad_whilePenIsUP(){
-        turtle.setCurrentDirection(CurrentLocation.SOUTH);
-        turtle.getPen().setPenOrientation(PenOrientation.PEN_UP);
-        turtle.setCurrentPosition(new Position(0,0));
-        turtle.move(sketchPad, 5);
-        assertEquals(new Position(4,0),turtle.getCurrentPosition());
-        turtle.move(sketchPad, 2);
-        assertEquals(new Position(5,0),turtle.getCurrentPosition());
-    }
-    @Test
-    void turtle_canMoveWestWards_onASketchPad_whilePenIsUP(){
-        turtle.setCurrentDirection(CurrentLocation.SOUTH);
-        turtle.getPen().setPenOrientation(PenOrientation.PEN_UP);
-        turtle.setCurrentPosition(new Position(0,7));
-        turtle.move(sketchPad, 5);
-        assertEquals(new Position(0,3),turtle.getCurrentPosition());
-        turtle.move(sketchPad, 2);
-        assertEquals(new Position(0,2),turtle.getCurrentPosition());
-    }
-    @Test
-    void turtle_canMoveNorthWards_onASketchPad_whilePenIsUP(){
-        turtle.setCurrentDirection(CurrentLocation.NORTH);
-        turtle.getPen().setPenOrientation(PenOrientation.PEN_UP);
-        turtle.setCurrentPosition(new Position(7,0));
-        turtle.move(sketchPad, 5);
-        assertEquals(new Position(3,0), turtle.getCurrentPosition());
-        turtle.move(sketchPad, 2);
-        assertEquals(new Position(0,0), turtle.getCurrentPosition());
-    }
-    @Test
-    void turtle_canWriteOnSketchPad_whileFacingEast(){
-        turtle.setCurrentDirection(CurrentLocation.EAST);
-        turtle.getPen().setPenOrientation(PenOrientation.PEN_DOWN);
-        turtle.setCurrentPosition(new Position(0, 0));
-        int numberOfSteps = 5;
-        turtle.move(sketchPad, 5);
-        for(int column = 0; column < numberOfSteps; column++){
-//            assertEquals(1,sketchPad.getFloor()[0][column]);
-        }
+        turtle.setCurrentDirection(Direction.WEST);
+        turtle.turnRight();
+        assertEquals(Direction.NORTH,turtle.getCurrentDirection());
 
-        Position position = new Position(2,0);
-        System.out.println(position.equals(turtle));
-    }
+        turtle.setCurrentDirection(Direction.NORTH);
+        turtle.turnRight();
+        assertEquals(Direction.EAST,turtle.getCurrentDirection());
+}
+@Test
+    void test_ThatTurtleCan_TurnLeft(){
+        turtle = new Turtle(pen);
+        turtle.setCurrentDirection(Direction.EAST);
+        turtle.turnLeft();
+        assertEquals(Direction.NORTH,turtle.getCurrentDirection());
+
+        turtle.setCurrentDirection(Direction.NORTH);
+        turtle.turnLeft();
+        assertEquals(Direction.WEST,turtle.getCurrentDirection());
+
+        turtle.setCurrentDirection(Direction.WEST);
+        turtle.turnLeft();
+        assertEquals(Direction.SOUTH,turtle.getCurrentDirection());
+
+        turtle.setCurrentDirection(Direction.SOUTH);
+        turtle.turnLeft();
+        assertEquals(Direction.EAST,turtle.getCurrentDirection());
+}
+
+@Test
+    void test_ThatTurtleCanMoveEastWards(){
+        turtle = new Turtle(pen);
+
+
+
+}
 }

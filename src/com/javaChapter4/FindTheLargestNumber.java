@@ -1,10 +1,10 @@
 package com.javaChapter4;
 
-
-
 public class FindTheLargestNumber {
     private  int number;
     private  int largest;
+
+
 
     public FindTheLargestNumber(int num) {
         this.number = num;
