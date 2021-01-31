@@ -9,7 +9,8 @@ public class PalindromesApp {
         System.out.println("Enter Five Numbers");
         Scanner userInput = new Scanner(System.in);
         int input = userInput.nextInt();
-        palindromes.separate(input);
+        palindromes.setUserInput(input);
+        palindromes.separate();
         palindromes.isAPalindromes();
     }
 }

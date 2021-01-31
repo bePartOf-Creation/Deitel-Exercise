@@ -19,10 +19,8 @@ class FindTheLargestNumberTest {
     @Test
     void testThatOurConstructorWorks(){
         largestNumber = new FindTheLargestNumber(0);
-        int num = largestNumber.getNumber();
-        int largest = largestNumber.getLargest();
+       int num = largestNumber.getNumber();
         assertEquals(0,num);
-        assertEquals(0,largest);
     }
 
     @Test
@@ -32,11 +30,14 @@ class FindTheLargestNumberTest {
         assertEquals(2,largestNumber.getNumber());
     }
 
-
     @Test
     void testThatNumberIsTheLargestNUmber(){
         largestNumber = new FindTheLargestNumber(0);
-        int largest = largestNumber.getMaximumNumber();
-        assertEquals(10, largest);
+        largestNumber.setNumber(-1);
+        largestNumber.setNumber(13);
+        largestNumber.setNumber(100);
+        largestNumber.setNumber(3000);
+        largestNumber.getMaximumNumber();
+        assertEquals(3000,largestNumber.getLargestNumber());
     }
 }

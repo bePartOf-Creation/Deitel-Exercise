@@ -2,12 +2,12 @@ package com.javaChapter4;
 
 public class FindTheLargestNumber {
     private  int number;
-    private  int largest;
-
+    private int largest;
 
 
     public FindTheLargestNumber(int num) {
         this.number = num;
+         this.largest = 0;
     }
 
     public int getNumber() {
@@ -16,15 +16,14 @@ public class FindTheLargestNumber {
     public void setNumber(int newNumber) {
         this.number = newNumber;
     }
-    public int getLargest() {
-        return  largest;
+    public void getMaximumNumber() {
+        int counter = 0;
+        boolean isLargest = number > largest;
+
+
     }
 
-    public int getMaximumNumber() {
-        setNumber(5);
-        number = largest;
-return  0;
+    public int getLargestNumber() {
+        return largest;
     }
-
-
 }
