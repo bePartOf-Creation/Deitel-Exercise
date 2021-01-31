@@ -15,18 +15,19 @@ public class SeparatingDigitsInInteger {
     }
     public SeparatingDigitsInInteger(){ }
     public void separate() {
-        int secondInput =  getUserInput()/10; //4529
-         firstModulus = getUserInput() % 10; //8
-        int thirdInput = secondInput/10; //452
-         secondModulus = secondInput % 10; //9
-        int fourthInput = thirdInput/10;//45
-         thirdModulus = thirdInput % 10;//2
-        int fifthInput =  fourthInput/10;//4
-         fourthModulus =  fourthInput % 10;//5
-        int sixthInput = fifthInput /10;//0.4
-         fifthModulus = fifthInput  % 10;// 4
-
-        System.out.printf("%3d%3d%3d%3d%3d%n", fifthModulus,fourthModulus,thirdModulus,secondModulus,firstModulus);
+        if (getUserInput() > 0) {
+            int secondInput = getUserInput() / 10; //4529
+            firstModulus = getUserInput() % 10; //8
+            int thirdInput = secondInput / 10; //452
+            secondModulus = secondInput % 10; //9
+            int fourthInput = thirdInput / 10;//45
+            thirdModulus = thirdInput % 10;//2
+            int fifthInput = fourthInput / 10;//4
+            fourthModulus = fourthInput % 10;//5
+            int sixthInput = fifthInput / 10;//0.4
+            fifthModulus = fifthInput % 10;// 4
+            System.out.printf("%3d%3d%3d%3d%3d%n", fifthModulus, fourthModulus, thirdModulus, secondModulus, firstModulus);
+        }
     }
 
     public static int getFirstModulus() {
@@ -47,7 +48,11 @@ public class SeparatingDigitsInInteger {
 
 
     public void setUserInput(int userInput) {
-        this.userInput = userInput;
+        if (userInput >=10000 && userInput <= 99999){
+            this.userInput = userInput;
+        }else{
+            System.out.println("Enter valid input");
+        }
     }
     public int getUserInput() {
         return  userInput;
