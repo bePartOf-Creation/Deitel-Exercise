@@ -14,7 +14,7 @@ public class GuessTheNumber {
 
         for (desiredValue = 0; desiredValue < 11; desiredValue++) {
             yourValue = 1 + random.nextInt(10);
-            System.out.println(yourValue);
+            //System.out.println(yourValue);
 
             System.out.println("Guess the Number from 1 - 10");
             desiredValue = userInput.nextDouble();
