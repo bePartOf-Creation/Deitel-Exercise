@@ -9,9 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class TurtleTest {
         Turtle turtle;
         Pen pen;
+        SketchPadPosition sketchPadPosition = new SketchPadPosition(0,0);
     @BeforeEach
     void setUp() {
         pen = new Pen();
+        turtle = new Turtle(pen);
     }
 
     @AfterEach
@@ -87,10 +89,52 @@ class TurtleTest {
 }
 
 @Test
-    void test_ThatTurtleCanMoveEastWards(){
-        turtle = new Turtle(pen);
-
-
-
+    void test_ThatTurtleCanMoveEastWards_WhenPen_isUP(){
+        SketchPad sketchBoard = new SketchPad();
+        int numOfSteps = 5;
+        turtle.setSketchPadPosition(sketchPadPosition);
+        turtle.move(sketchBoard,numOfSteps);
+        SketchPadPosition actual = turtle.getSketchPadPosition();
+        assertEquals(new SketchPadPosition(0,5),actual);
+}
+@Test
+    void testThat_TurtleCanMoveWestWards_WhenPen_isUP(){
+        turtle.setCurrentDirection(Direction.WEST);
+        SketchPad sketchBoard = new SketchPad();
+        int numOfSteps = 5;
+        turtle.setSketchPadPosition(new SketchPadPosition(0,12));
+        turtle.move(sketchBoard,numOfSteps);
+        SketchPadPosition actual = turtle.getSketchPadPosition();
+        assertEquals(new SketchPadPosition(0,7),actual);
+}
+@Test
+    void testTHat_turtleCanMoveNorthWards_WhenPEN_isUp(){
+        turtle.setCurrentDirection(Direction.NORTH);
+        SketchPad sketchBoard = new SketchPad();
+        int numOfSteps= 5;
+        turtle.setSketchPadPosition(new SketchPadPosition(12,0));
+        turtle.move(sketchBoard,numOfSteps);
+        SketchPadPosition actual = turtle.getSketchPadPosition();
+        assertEquals(new SketchPadPosition(7,0),actual);
+    }
+@Test
+    void testThat_turtleCanMoveSouthWards_WhenPEN_is_Up(){
+        turtle.setCurrentDirection(Direction.SOUTH);
+        SketchPad sketchBoard = new SketchPad();
+        int numOfSteps = 5;
+        turtle.setSketchPadPosition(new SketchPadPosition(10,0));
+        turtle.move(sketchBoard,numOfSteps);
+        SketchPadPosition actual = turtle.getSketchPadPosition();
+        assertEquals(new SketchPadPosition(15,0),actual);
+}
+@Test
+    void testThatTurtleCanMOveEastWards_WhenPEN_isDown(){
+    SketchPad sketchBoard = new SketchPad();
+    int numOfSteps = 5;
+    turtle.setSketchPadPosition(sketchPadPosition);
+    turtle.move(sketchBoard,numOfSteps);
+    SketchPadPosition actual = turtle.getSketchPadPosition();
+    assertEquals(new SketchPadPosition(0,5),actual);
+    
 }
 }

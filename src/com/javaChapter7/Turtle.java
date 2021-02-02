@@ -3,6 +3,7 @@ package com.javaChapter7;
 public class Turtle {
     private Pen pen;
     private Direction currentDirection;
+    private SketchPadPosition position;
 
     public Turtle(Pen pen) {
         this.pen = pen;
@@ -37,5 +38,31 @@ public class Turtle {
             case SOUTH -> setCurrentDirection(Direction.EAST);
 
         }
+    }
+
+    public void setSketchPadPosition(SketchPadPosition position) {
+        this.position = position;
+    }
+
+    public void move(SketchPad sketchBoard, int numOfSteps) {
+        SketchPadPosition sketchPadPosition = getSketchPadPosition();
+        int currentColumn = sketchPadPosition.getNoOfColumns();
+        int currentRows = sketchPadPosition.getNoOfRows();
+
+        switch (currentDirection){
+            case EAST -> {
+                sketchPadPosition.setNoOfColumns(currentColumn + numOfSteps);
+            }case WEST -> {
+                sketchPadPosition.setNoOfColumns(currentColumn - numOfSteps);
+            }case NORTH -> {
+                sketchPadPosition.setNoOfRows(currentRows - numOfSteps);
+            }case SOUTH -> {
+                sketchPadPosition.setNoOfRows(currentRows + numOfSteps);
+            }
+        }
+    }
+
+    public SketchPadPosition getSketchPadPosition() {
+        return position;
     }
 }
