@@ -16,7 +16,7 @@ public class Counter {
     }
 
     public int displayCounter() {
-          for( ; counter < 10; counter++){
+          for( ; counter <= 10; counter++){
               System.out.println(counter);
           }
           return  counter;
