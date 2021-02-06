@@ -9,11 +9,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class TurtleTest {
         Turtle turtle;
         Pen pen;
-        SketchPadPosition sketchPadPosition = new SketchPadPosition(0,0);
+        SketchPadPosition sketchPadPosition;
+        SketchPad sketchBoard;
+
     @BeforeEach
     void setUp() {
         pen = new Pen();
         turtle = new Turtle(pen);
+        sketchBoard = new SketchPad(20, 20);
+        sketchPadPosition = new SketchPadPosition(0,0);
     }
 
     @AfterEach
@@ -90,7 +94,6 @@ class TurtleTest {
 
 @Test
     void test_ThatTurtleCanMoveEastWards_WhenPen_isUP(){
-        SketchPad sketchBoard = new SketchPad();
         int numOfSteps = 5;
         turtle.setSketchPadPosition(sketchPadPosition);
         turtle.move(sketchBoard,numOfSteps);
@@ -100,7 +103,6 @@ class TurtleTest {
 @Test
     void testThat_TurtleCanMoveWestWards_WhenPen_isUP(){
         turtle.setCurrentDirection(Direction.WEST);
-        SketchPad sketchBoard = new SketchPad();
         int numOfSteps = 5;
         turtle.setSketchPadPosition(new SketchPadPosition(0,12));
         turtle.move(sketchBoard,numOfSteps);
@@ -110,7 +112,6 @@ class TurtleTest {
 @Test
     void testTHat_turtleCanMoveNorthWards_WhenPEN_isUp(){
         turtle.setCurrentDirection(Direction.NORTH);
-        SketchPad sketchBoard = new SketchPad();
         int numOfSteps= 5;
         turtle.setSketchPadPosition(new SketchPadPosition(12,0));
         turtle.move(sketchBoard,numOfSteps);
@@ -120,7 +121,6 @@ class TurtleTest {
 @Test
     void testThat_turtleCanMoveSouthWards_WhenPEN_is_Up(){
         turtle.setCurrentDirection(Direction.SOUTH);
-        SketchPad sketchBoard = new SketchPad();
         int numOfSteps = 5;
         turtle.setSketchPadPosition(new SketchPadPosition(10,0));
         turtle.move(sketchBoard,numOfSteps);
@@ -129,12 +129,29 @@ class TurtleTest {
 }
 @Test
     void testThatTurtleCanMOveEastWards_WhenPEN_isDown(){
-    SketchPad sketchBoard = new SketchPad();
+        pen.setPenOrientation(PenOrientation.PEN_DOWN);
     int numOfSteps = 5;
     turtle.setSketchPadPosition(sketchPadPosition);
     turtle.move(sketchBoard,numOfSteps);
     SketchPadPosition actual = turtle.getSketchPadPosition();
+    for(int column = 0; column < numOfSteps; column++){
+            System.out.println(sketchBoard.getFloor()[0][column]);
+        assertEquals(1, sketchBoard.getFloor()[0][column]);
+    }
     assertEquals(new SketchPadPosition(0,5),actual);
-    
 }
+    @Test
+    void testThatTurtleCanMOveSouthWards_WhenPEN_isDown() {
+        pen.setPenOrientation(PenOrientation.PEN_DOWN);
+        turtle.turnRight();
+        int numOfSteps = 5;
+        turtle.setSketchPadPosition(sketchPadPosition);
+        turtle.move(sketchBoard, numOfSteps);
+        SketchPadPosition actual = turtle.getSketchPadPosition();
+        for (int row = 0; row < numOfSteps; row++) {
+            System.out.println(sketchBoard.getFloor()[row][0]);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            assertEquals(1, sketchBoard.getFloor()[row][0]);
+        }
+        assertEquals(new SketchPadPosition(5, 0), actual);
+    }
 }

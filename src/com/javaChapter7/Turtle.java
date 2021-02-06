@@ -45,21 +45,46 @@ public class Turtle {
     }
 
     public void move(SketchPad sketchBoard, int numOfSteps) {
-        SketchPadPosition sketchPadPosition = getSketchPadPosition();
-        int currentColumn = sketchPadPosition.getNoOfColumns();
-        int currentRows = sketchPadPosition.getNoOfRows();
+        switch (pen.getPenOrientation()){
+            case PEN_UP -> {
+                SketchPadPosition sketchPadPosition = getSketchPadPosition();
+                int currentColumn = sketchPadPosition.getNoOfColumns();
+                int currentRows = sketchPadPosition.getNoOfRows();
 
-        switch (currentDirection){
-            case EAST -> {
-                sketchPadPosition.setNoOfColumns(currentColumn + numOfSteps);
-            }case WEST -> {
-                sketchPadPosition.setNoOfColumns(currentColumn - numOfSteps);
-            }case NORTH -> {
-                sketchPadPosition.setNoOfRows(currentRows - numOfSteps);
-            }case SOUTH -> {
-                sketchPadPosition.setNoOfRows(currentRows + numOfSteps);
+                switch (currentDirection){
+                    case EAST -> {
+                        sketchPadPosition.setNoOfColumns(currentColumn + numOfSteps);
+                    }case WEST -> {
+                        sketchPadPosition.setNoOfColumns(currentColumn - numOfSteps);
+                    }case NORTH -> {
+                        sketchPadPosition.setNoOfRows(currentRows - numOfSteps);
+                    }case SOUTH -> {
+                        sketchPadPosition.setNoOfRows(currentRows + numOfSteps);
+                    }
+                }
+            }
+            case PEN_DOWN -> {
+                SketchPadPosition sketchPadPosition = getSketchPadPosition();
+                int currentColumn = sketchPadPosition.getNoOfColumns();
+                int currentRows = sketchPadPosition.getNoOfRows();
+                int [][] floor = sketchBoard.getFloor();
+                switch (currentDirection){
+                    case EAST -> {
+                        for(int column = currentColumn; column < numOfSteps; column++){
+                            floor[currentRows][column] = 1;
+                        }
+                        sketchPadPosition.setNoOfColumns(numOfSteps);
+                    }
+                    case SOUTH -> {
+                        for(int row = currentRows; row < numOfSteps; row++){
+                            floor[row][currentColumn] = 1;
+                        }
+                        sketchPadPosition.setNoOfRows(numOfSteps);
+                    }
+                }
             }
         }
+
     }
 
     public SketchPadPosition getSketchPadPosition() {
