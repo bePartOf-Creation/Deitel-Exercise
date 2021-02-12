@@ -41,7 +41,7 @@ class SeparatingDigitsInIntegerTest {
 
 
     @Test
-    void  test_ThatTheFIveUserInputIsAPalindromes(){
+    void  test_ThatTheFIveUserInputCanBeSeparated(){
         separatingDigitsInInteger = new SeparatingDigitsInInteger(0);
         separatingDigitsInInteger.setUserInput(15351);
         separatingDigitsInInteger.separate();
