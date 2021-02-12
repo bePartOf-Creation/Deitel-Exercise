@@ -24,10 +24,10 @@ class FactorialTest {
     }
 @Test
     void testThat_GenerateTheFactorial(){
-    factorial = new Factorial(0);
-     factorial.setInputNumber(3);
-     factorial.calculateFactorial();
-     assertEquals(6,factorial.getInputNumber());
+        factorial = new Factorial(0);
+        factorial.setInputNumber(3);
+        double calculate = factorial.calculateFactorial();
+        assertEquals(6,calculate);
 }
 @Test
     void testToDisplayOutputMessage(){
