@@ -2,50 +2,119 @@ package com.javaChapter4;
 
 public class Cryptography {
 
-    private static int firstModulus;
-    private static int secondModulus;
-    private static int fourthModulus;
-    private static int thirdModulus;
+    private int firstModulus;
+    private int secondModulus;
+    private int thirdModulus;
+    private int fourthModulus;
+    private int encryptValue;
+    private int modValue;
     private int userInput;
 
+
+    public Cryptography(int firstModulus, int secondModulus, int thirdModulus, int fourthModulus) {
+        this.firstModulus = firstModulus;
+        this.secondModulus = secondModulus;
+        this.thirdModulus = thirdModulus;
+        this.fourthModulus = fourthModulus;
+        this.encryptValue = 7;
+        this.modValue = 10;
+
+    }
 
     public Cryptography(int userInput) {
         this.userInput = userInput;
     }
-    public static int getFirstModulus() {
+
+    public int getFirstModulus() {
         return firstModulus;
     }
-    public static int getSecondModulus() {
+
+    public void setFirstModulus(int firstModulus) {
+        int newValue= firstModulus + encryptValue;
+        this.firstModulus = newValue % modValue;
+    }
+
+    public void setSecondModulus(int secondModulus) {
+        int newValue= secondModulus + encryptValue;
+        this.secondModulus = newValue % modValue;
+    }
+
+    public int getSecondModulus() {
         return secondModulus;
     }
-    public static int getFourthModulus() {
-        return  fourthModulus;
+
+    public void setThirdModulus(int thirdModulus) {
+        int newValue= thirdModulus + encryptValue;
+        this.thirdModulus = newValue % modValue;
     }
-    public static int getThirdModulus() {
-        return  thirdModulus;
+
+    public int getThirdModulus() {
+        return thirdModulus;
     }
-    public int getUserInput() {
-        return userInput;
+
+    public void setFourthModulus(int fourthNumber) {
+        int newValue= fourthNumber + encryptValue;
+        this.fourthModulus = newValue % modValue;
     }
+
+    public int getFourthModulus() {
+        return fourthModulus;
+    }
+
+    public void setEncryptValue(int ENCRYPT_VALUE) {
+        this.encryptValue = ENCRYPT_VALUE ;
+
+    }
+    public int getEncryptValue() {
+        return encryptValue;
+    }
+
+    public void setModValue(int MOD_VALUE) {
+        this.modValue = MOD_VALUE;
+    }
+    public int getModValue() {
+        return modValue;
+    }
+    public String encryptUserInput() {
+        String value = "";
+        value = "" + thirdModulus + "" + firstModulus +
+                "" + fourthModulus + "" + secondModulus;
+        return  value;
+    }
+
+
+    public void decryptUserInput() {
+        this.firstModulus = (getFirstModulus() + getModValue()) - getEncryptValue();
+        this.secondModulus = (getSecondModulus() + getModValue()) - getEncryptValue();
+        this.thirdModulus = (getThirdModulus() + getModValue()) - getEncryptValue();
+        this.fourthModulus = (getFourthModulus() + getModValue()) - getEncryptValue();
+    }
+
+    public String displayDecryptedValue() {
+        String value = "";
+        value = "" + firstModulus + "" + secondModulus +
+                "" + thirdModulus + "" + fourthModulus;
+        return  value;
+    }
+
     public void setUserInput(int userInput) {
-        final int VALUES = 7;
-        if (userInput > 1000 && userInput < 9999){
-            this.userInput = userInput + VALUES;
-        }else{
-            System.out.println("Error");
-        }
+        this.userInput = userInput;
     }
+
+    public int getUserInput() {
+        return  userInput;
+    }
+
     public void separate() {
-        if(getUserInput() > 0){//1234
-            int secondInput = getUserInput() / 10; //123
-            firstModulus    = getUserInput() % 10; //4
-            int thirdInput  = secondInput / 10; //12
-            secondModulus   = secondInput % 10; //3
-            int fourthInput = thirdInput / 10;//1
-            thirdModulus    = thirdInput % 10;//2
-            int fifthInput  = fourthInput / 10;//1
-            fourthModulus   = fourthInput % 10;//1
-        System.out.printf("%3d%3d%3d%3d%n",secondModulus,fourthModulus,thirdModulus,firstModulus);
-        }
+        int secondInput = getUserInput() / 10; //4529
+        firstModulus = getUserInput() % 10; //8
+        int thirdInput = secondInput / 10; //452
+        secondModulus = secondInput % 10; //9
+        int fourthInput = thirdInput / 10;//45
+        thirdModulus = thirdInput % 10;//2
+        int fifthInput = fourthInput / 10;//4
+        fourthModulus = fourthInput % 10;//5
+
     }
+
 }
