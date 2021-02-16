@@ -7,7 +7,6 @@ public class SumOfIntegers {
 /**----Constructor for Sum of Integers--------*/
     public SumOfIntegers(int sum, int counter) {
         this.sum = sum;
-
         this.counter = counter;
     }
 /**----OnlyGetters Methods and No Setter method because Our
