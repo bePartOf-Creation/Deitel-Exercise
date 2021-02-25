@@ -7,7 +7,6 @@ public class CompoundInterestApp {
         CompoundInterest interest = new CompoundInterest(0.0,0.0,0);
         Scanner input = new  Scanner(System.in);
 
-
         System.out.println("To Calculate the Compound Interest at Different rate.\nEnter your principal and the number of years");
         System.out.println("Enter your principal amount");
         double amount = input.nextDouble();
@@ -23,6 +22,7 @@ public class CompoundInterestApp {
             interest.calculateCompoundInterest(rate);
             year++;
             System.out.printf("%4d%,22.2f%n",year,interest.getAmount());
+
         }
     }
 }
