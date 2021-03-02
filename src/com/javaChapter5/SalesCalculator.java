@@ -3,7 +3,7 @@ package com.javaChapter5;
 public class SalesCalculator {
     private int productNumber;
     private int quantitySold;
-    private double retailValue;
+    private final double retailValue;
     private double price;
 
 

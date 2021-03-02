@@ -17,7 +17,7 @@ public class RectangularApp {
                   System.out.println("Enter Width Value");
                   double newWidth = input.nextDouble();
                   if(userChoice < 1 || userChoice > 2){
-                      throw  new IllegalArgumentException("Please Enter 1 or 2");
+                      throw  new IllegalArgumentException("Wrong Input.Please Enter 1 or 2");
                   }
 
                   switch (userChoice){
@@ -31,23 +31,21 @@ public class RectangularApp {
               userChoice = input.nextInt();
           }
           catch (IllegalArgumentException e){
-              System.out.println("Please Enter 1 or 2");
+              System.out.println("Wrong Choice .Please Enter 1 or 2");
           }
-
     }
     private static void calculateAreaOfRectangle(double newLength, double newWidth){
         Rectangle rectangle = new Rectangle(newLength,newWidth);
         rectangle.setLength(newLength);
         rectangle.setWidth(newWidth);
-        System.out.printf("%s%.1f%n","Area Of Rectangle is ",rectangle.area());
+        System.out.printf("%s%.2f%n","Area Of Rectangle is ",rectangle.area());
         rectangle.area();
     }
     private static void calculatePerimeterOfRectangle(double newLength, double newWidth){
         Rectangle rectangle = new Rectangle(newLength,newWidth);
         rectangle.setLength(newLength);
         rectangle.setWidth(newWidth);
-        System.out.printf("%s%f%n","Perimeter Of Rectangle is ",rectangle.perimeter());
+        System.out.printf("%s%.2f%n","Perimeter Of Rectangle is ",rectangle.perimeter());
         rectangle.perimeter();
     }
-
 }
