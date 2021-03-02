@@ -38,14 +38,14 @@ public class RectangularApp {
         Rectangle rectangle = new Rectangle(newLength,newWidth);
         rectangle.setLength(newLength);
         rectangle.setWidth(newWidth);
-        System.out.printf("%s%.2f%n","Area Of Rectangle is ",rectangle.area());
-        rectangle.area();
+        System.out.printf("%s%.2f%n","Area Of Rectangle is ",rectangle.calculateArea());
+        rectangle.calculateArea();
     }
     private static void calculatePerimeterOfRectangle(double newLength, double newWidth){
         Rectangle rectangle = new Rectangle(newLength,newWidth);
         rectangle.setLength(newLength);
         rectangle.setWidth(newWidth);
-        System.out.printf("%s%.2f%n","Perimeter Of Rectangle is ",rectangle.perimeter());
-        rectangle.perimeter();
+        System.out.printf("%s%.2f%n","Perimeter Of Rectangle is ",rectangle.calculatePerimeter());
+        rectangle.calculatePerimeter();
     }
 }

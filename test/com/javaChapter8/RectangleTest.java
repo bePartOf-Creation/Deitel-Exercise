@@ -44,7 +44,7 @@ class RectangleTest {
         rectangle = new Rectangle(0.0,0.0);
         rectangle.setLength(7.0);
         rectangle.setWidth(2.0);
-        double area = rectangle.area();
+        double area = rectangle.calculateArea();
         assertEquals(14.0,area);
     }
     @Test
@@ -52,7 +52,7 @@ class RectangleTest {
         rectangle = new Rectangle(0.0,0.0);
         rectangle.setLength(7.0);
         rectangle.setWidth(2.0);
-        double perimeter = rectangle.perimeter();
+        double perimeter = rectangle.calculatePerimeter();
         assertEquals(18.0,perimeter);
     }
 
