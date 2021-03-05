@@ -31,14 +31,12 @@ public class Rectangle {
     public double getWidth() {
         return width;
     }
-
     public double calculatePerimeter() {
         double length = getLength();
         double width = getWidth();
 
         return (2 *length) + (2 * width);
     }
-
     public  double calculateArea() {
         double length = getLength();
         double width = getWidth();

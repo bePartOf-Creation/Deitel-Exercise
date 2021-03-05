@@ -3,11 +3,11 @@ package com.javaChapter4;
 public class TabularOutputApp {
     public static void main(String[] args) {
 
-        int[] arrayOfInput = new int[11];
+       // int[] arrayOfInput = new int[11];
         int counter;
 
         System.out.printf("%s%8s%8s%8s%n","N","10*N","100*N","1000*N");
-        for(counter= 1; counter < arrayOfInput.length;counter++){
+        for(counter= 1;  counter < 11 ;counter++){
             System.out.printf("%s%8s%8s%8s%n",counter,getInTen(counter),getInHundred(counter),
                     getInThousand(counter));
         }
