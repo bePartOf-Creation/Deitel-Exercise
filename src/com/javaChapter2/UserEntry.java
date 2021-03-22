@@ -6,7 +6,7 @@ public class UserEntry {
 
     private String entryBody;
     private String entryTitle;
-    private LocalDateTime entryDateAndTime;// Re-using Java Local date and Time
+    private final LocalDateTime entryDateAndTime;// Re-using Java Local date and Time
 
     public UserEntry(String userEntryTitle,String userEntryBody) {
         this.entryTitle = userEntryTitle;

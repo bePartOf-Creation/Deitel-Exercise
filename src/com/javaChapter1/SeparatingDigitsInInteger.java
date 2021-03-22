@@ -15,7 +15,7 @@ public class SeparatingDigitsInInteger {
     }
     public SeparatingDigitsInInteger(){ }
     public void separate() {
-        if (getUserInput() > 0) {
+        if (getUserInput() > 0) {//45298
             int secondInput = getUserInput() / 10; //4529
             firstModulus = getUserInput() % 10; //8
             int thirdInput = secondInput / 10; //452

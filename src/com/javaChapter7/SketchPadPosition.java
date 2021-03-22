@@ -8,23 +8,18 @@ public class SketchPadPosition {
         this.noOfRows = noOfRows;
         this.noOfColumns = noOfColumns;
     }
-
     public int getNoOfColumns() {
         return noOfColumns;
     }
-
     public void setNoOfColumns(int noOfColumns) {
         this.noOfColumns = noOfColumns;
     }
-
     public int getNoOfRows() {
         return noOfRows;
     }
-
     public void setNoOfRows(int noOfRows) {
         this.noOfRows = noOfRows;
     }
-
     @Override
     public boolean equals(Object obj) {
         boolean isEquals = false;

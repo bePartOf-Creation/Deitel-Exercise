@@ -1,7 +1,7 @@
 package com.javaChapter7;
 
 public class Turtle {
-    private Pen pen;
+    private final Pen pen;
     private Direction currentDirection;
     private SketchPadPosition position;
 
@@ -29,21 +29,17 @@ public class Turtle {
             case NORTH -> setCurrentDirection(Direction.EAST);
         }
     }
-
     public void turnLeft() {
         switch (currentDirection){
             case EAST -> setCurrentDirection(Direction.NORTH);
             case NORTH -> setCurrentDirection(Direction.WEST);
             case WEST -> setCurrentDirection(Direction.SOUTH);
             case SOUTH -> setCurrentDirection(Direction.EAST);
-
         }
     }
-
     public void setSketchPadPosition(SketchPadPosition position) {
         this.position = position;
     }
-
     public void move(SketchPad sketchBoard, int numOfSteps) {
         switch (pen.getPenOrientation()){
             case PEN_UP -> {
@@ -84,9 +80,7 @@ public class Turtle {
                 }
             }
         }
-
     }
-
     public SketchPadPosition getSketchPadPosition() {
         return position;
     }
