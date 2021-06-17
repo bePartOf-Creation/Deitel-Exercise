@@ -1,11 +1,25 @@
 package com.javaChapter8;
 
+import com.javaChapter3.Date;
+
+import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
+import java.util.Optional;
 
 public class DateOverloaded {
     private int day;
     private int year;
     private int month;
+    private String monthString;
+    private DateEnum date;
+
+    public DateEnum getDate() {
+        return date;
+    }
+
+    public void setDate(DateEnum date) {
+        this.date = date;
+    }
 
     public DateOverloaded(int month, int day, int year) {
         this.month = month;
@@ -48,7 +62,27 @@ public class DateOverloaded {
         return month;
     }
 
-    public int setMonth(String month) {
+    public void userInput(String input){
+        this.monthString = input;
+    }
+
+    public String getMonthAsString(){
+        return monthString;
+    }
+
+//    public int setAMonth(){
+//        return switch(getMonthAsString().toLowerCase()){
+//            int month = DateEnum.JANUARY.getMonthAsNumber();
+////            case "January", "jan" ->
+//
+//            default -> throw new IllegalArgumentException("here");
+//                    };
+//    }
+    public static void main(String[] args) {
+        DateOverloaded dateOverload = new DateOverloaded("January", 12, 1995);
+
+
+        System.out.println(DateEnum.JANUARY.getMonthAsNumber());
 
     }
 }

@@ -9,6 +9,7 @@ public class PythagoreanTriples {
         int input = userInput.nextInt();
         printPythagoreanTriples(input);
         System.out.println("Thank you for Banking With Us");
+
     }
     private static void printPythagoreanTriples(int userInput){
         for(int a = 1;a < userInput; a++){
